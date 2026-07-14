@@ -63,6 +63,29 @@ fn main() {
     let x1: f32 = -0.;
     let x2: f32 = 0.;
     println!("{}", x1 == x2);
+
+    let x = std::f64::consts::PI;
+    println!("{}", x);
+
+    let x: i32 = 10;
+    let y = x as f64;
+    println!("{}", y);
+
+    let x = std::f64::consts::PI;
+    let y = x as i32;
+    println!("{}", y);
+
+    let x = 10;
+    if x < 20 {
+        println!("x < 20, x is {}", x);
+    }
+    assert_eq!(false as i32, 0);
+    assert_eq!(true as i128, 1);
+
+    let x = &true;
+    println!("{}", *x);
+
+    let c = ' ';
 }
 
 fn build_vector_1() -> Vec<i16> {
