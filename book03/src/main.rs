@@ -85,8 +85,82 @@ fn main() {
     let x = &true;
     println!("{}", *x);
 
-    let c = ' ';
+    let c = '你';
+    println!("{}", c);
+
+    let c: [char; 4] = ['*', 42 as char, '\x2A', '\u{CA0}'];
+    println!("{:?}", c);
+
+    let c = ['\u{000000}' as char, '\u{007F}', '\u{d7ff}', '\u{10FFFF}'];
+    println!("{:?}", c);
+
+    assert_eq!('*' as i32, 42);
+    assert_eq!('\u{CA0}' as u16, 0xca0);
+    assert_eq!('\u{CA0}' as i8, -0x60);
+
+    if let Some(c) = char::from_u32(500) {
+        println!("{}", c);
+    }
+
+    assert_eq!('*'.is_alphabetic(), false);
+    assert_eq!('8'.to_digit(10), Some(8));
+    assert_eq!(('\u{CA0}').len_utf8(), 3);
+
+    let text = "I see the eigenvalue in thine eye";
+    let (head, tail) = text.split_at(21);
+    println!("{}, {}", head, tail);
+
+    let temp = text.split_at(21);
+    let head = temp.0;
+    let tail = temp.1;
+    println!("{}, {}", head, tail);
+
+    let s = String::from("Hello world");
+    let ref_s = &s;
+    println!("{}, {}", ref_s, *ref_s);
+
+    let i = 10;
+    let ref_i = &i;
+    println!("{}, {}", ref_i, *ref_i);
+
+    let t = (12, "eggs");
+    let b = Box::new(t);
+    println!("{:?}", b);
+
+    let lazy_caterer: [u32; 6] = [1, 2, 3, 4, 5, 6];
+    let taxonomy = ["Animalia", "Arthropoda", "Insecta"];
+
+    assert_eq!(lazy_caterer[3], 4);
+    assert_eq!(taxonomy.len(), 3);
+
+    let mut sieve = [true; 10000];
+    for i in 2..100 {
+        if sieve[i] {
+            let mut j = i * i;
+            while j < 10000 {
+                sieve[j] = false;
+                j += i;
+            }
+        }
+    }
+
+    assert_eq!(sieve[211], true);
+    assert!(!sieve[9876]);
+
+    let buf = [0u8; 1024];
+    println!("{}", buf[0]);
+
+    const N: usize = 10;
+    let array = [0i32; N];
+    println!("{:?}", array);
+
+    let mut chaos = [5, 2, 3, 4, 1];
+    chaos.sort();
+    assert_eq!(chaos, [1, 2, 3, 4, 5]);
 }
+
+fn _swap<T>(_x: &mut T, _y: &mut T) {}
+fn _swap_1<T>(_x: &mut T, _y: &mut T) -> () {}
 
 fn build_vector_1() -> Vec<i16> {
     let mut v: Vec<i16> = Vec::<i16>::new();
