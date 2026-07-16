@@ -177,6 +177,74 @@ fn main() {
 
     let v: Vec<u32> = (0..5).collect();
     assert_eq!(v, [0, 1, 2, 3, 4]);
+
+    let mut v = Vec::with_capacity(5);
+    v.push(10);
+    v.push(20);
+    println!("len: {}, cap: {}, v: {:?}", v.len(), v.capacity(), v);
+
+    let mut v = Vec::with_capacity(2);
+    println!("len: {}, cap: {}, v: {:?}", v.len(), v.capacity(), v);
+
+    v.push(1);
+    v.push(2);
+    println!("len: {}, cap: {}, v: {:?}", v.len(), v.capacity(), v);
+
+    v.push(3);
+    println!("len: {}, cap: {}, v: {:?}", v.len(), v.capacity(), v);
+
+    let mut v = vec![10, 20, 30, 40, 50];
+    println!("len: {}, cap: {}, v: {:?}", v.len(), v.capacity(), v);
+    v.insert(3, 35);
+    println!("len: {}, cap: {}, v: {:?}", v.len(), v.capacity(), v);
+    v.remove(1);
+    println!("len: {}, cap: {}, v: {:?}", v.len(), v.capacity(), v);
+
+    let mut v = vec!["Snow puff", "Glass gem"];
+    v.reverse();
+    assert_eq!(v.pop(), Some("Snow puff"));
+    assert_eq!(v.pop(), Some("Glass gem"));
+    assert_eq!(v.pop(), None);
+
+    let languages = vec![
+        String::from("C++"),
+        String::from("C"),
+        String::from("Go"),
+        String::from("Rust"),
+    ];
+
+    for l in languages {
+        println!(
+            "{}: {}",
+            l,
+            if l.len() % 2 == 0 {
+                "functional"
+            } else {
+                "imperative"
+            }
+        );
+    }
+
+    let v: Vec<f64> = vec![0.0, 0.707, 1.0, 0.707];
+    let a: [f64; 4] = [0.0, 0.707, 1.0, 0.707];
+
+    let sv: &[f64] = &v;
+    let sa: &[f64] = &a;
+    println!("{:?}, {:?}", sv, sa);
+
+    print_slice(&v);
+    print_slice(&a);
+
+    let v = [1.0, 2f64, 3.2, 4.3, 5.];
+    print_slice(&v[0..2]);
+    print_slice(&v[2..]);
+    print_slice(&v[..v.len()]);
+}
+
+fn print_slice(v: &[f64]) {
+    for e in v {
+        println!("{}", e);
+    }
 }
 
 fn new_pixel_buffer(rows: usize, cols: usize) -> Vec<u8> {
