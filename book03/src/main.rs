@@ -177,6 +177,10 @@ fn main() {
 
     let v: Vec<u32> = (0..5).collect();
     assert_eq!(v, [0, 1, 2, 3, 4]);
+
+    let mut palindrome = vec!["a man", "a plan", "a canal", "panama"];
+    palindrome.reverse();
+    println!("{:?}", palindrome);
 }
 
 fn new_pixel_buffer(rows: usize, cols: usize) -> Vec<u8> {
