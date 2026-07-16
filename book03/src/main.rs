@@ -243,6 +243,32 @@ fn main() {
     print_slice(&v[0..2]);
     print_slice(&v[2..]);
     print_slice(&v[..v.len()]);
+
+    let speech = "\"Ouch!\" said the well. \n";
+    println!("{}", speech);
+
+    println!(
+        "In the room the women come and go,
+        Singing of Mount Abora"
+    );
+
+    println!(
+        "It was a bright, cold day in April, and \
+        there were four of us-\
+        more or less."
+    );
+
+    let default_win_install_path = r"C:\Program Files\Gorillas";
+    println!("{}", default_win_install_path);
+
+    println!(
+        r###"This raw string started with 'r###"".
+        Therefore it does not end until we reach a quote mark ('"')
+        followed immediately by three pound signs ('###'):"###
+    );
+
+    let method = b"GET";
+    assert_eq!(method, &[b'G', b'E', b'T']);
 }
 
 fn print_slice(v: &[f64]) {
