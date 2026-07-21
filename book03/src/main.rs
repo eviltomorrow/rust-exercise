@@ -269,6 +269,15 @@ fn main() {
 
     let method = b"GET";
     assert_eq!(method, &[b'G', b'E', b'T']);
+
+    let r = br"C:\Program Files\Gorillas";
+    println!("{:?}", r);
+
+    let noodles = "noodles".to_string();
+    let oodles = &noodles[1..];
+    let poodles = "\u{CA0}_\u{CA0}";
+    let p = 0x3;
+    println!("{}, {}, {}", oodles, poodles, p);
 }
 
 fn print_slice(v: &[f64]) {
