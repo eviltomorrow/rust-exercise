@@ -69,6 +69,24 @@ fn main() {
         s.push('!');
         println!("{}", s);
     }
+
+    let mut composers = Vec::new();
+    composers.push(Person2 {
+        name: Some("H".to_string()),
+        birth: 10,
+    });
+    composers.push(Person2 {
+        name: Some("I".to_string()),
+        birth: 20,
+    });
+
+    println!("{:?}", composers);
+
+    let first_name = std::mem::replace(&mut composers[0].name, None);
+    println!("{:?}", first_name);
+
+    let second_name = composers[0].name.take();
+    println!("{:?}", second_name);
 }
 
 fn print_vec(v: Vec<i32>) {
@@ -89,5 +107,12 @@ fn print_padovan() {
 #[derive(Debug)]
 struct Person {
     name: String,
+    birth: i32,
+}
+
+#[derive(Debug)]
+#[allow(dead_code)]
+struct Person2 {
+    name: Option<String>,
     birth: i32,
 }
