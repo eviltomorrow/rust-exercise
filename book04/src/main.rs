@@ -1,3 +1,5 @@
+use std::rc::Rc;
+
 fn main() {
     println!("Hello, world!");
 
@@ -87,6 +89,33 @@ fn main() {
 
     let second_name = composers[0].name.take();
     println!("{:?}", second_name);
+
+    let string1 = "somnambulance".to_string();
+    let string2 = string1;
+
+    let num1: i32 = 36;
+    let num2 = num1;
+    println!("{}, {}", string2, num2);
+
+    let l = Label { number: 10 };
+    print(l);
+    println!("{}", l.number);
+
+    let s = Rc::new("hello".to_string());
+    let t = s.clone();
+    let u = t.clone();
+
+    println!("{:?}", u);
+    println!("{}", s.contains("llo"));
+}
+
+fn print(l: Label) {
+    println!("STAMP: {}", l.number);
+}
+
+#[derive(Copy, Clone)]
+struct Label {
+    number: u32,
 }
 
 fn print_vec(v: Vec<i32>) {
