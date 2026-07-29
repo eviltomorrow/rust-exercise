@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::vec;
 
 fn main() {
     println!("Hello, world!");
@@ -111,6 +112,101 @@ fn main() {
         s = smallest(&parabola);
         println!("{:?}", s);
     }
+
+    let x = 10;
+    {
+        let s = S { r: &x };
+        println!("{:?}", s);
+
+        let d = D { s };
+        println!("{:?}", d.s);
+    }
+
+    let v = vec![1, 2, 3, 4, 5];
+    let s = build_vec(&v);
+    println!("{:?}", s);
+
+    let x = 10;
+    let r;
+    {
+        let y = 20;
+        {
+            let g = G { x: &x, y: &y };
+            r = g.x;
+        }
+    }
+    println!("{}", r);
+
+    let x = 10;
+    {
+        let y = 20;
+        let z = a1(&x, &y);
+        println!("{}", z);
+    }
+
+    let x = 10;
+    {
+        let y = 20;
+        let z = a2(&x, &y);
+        println!("{}", z);
+    }
+
+    let v = vec![4, 8, 19, 27, 34, 10];
+    {
+        let r = &v;
+        r[0];
+    }
+    let aside = v;
+    println!("{:?}", aside);
+
+    let mut wave = Vec::new();
+    let head = vec![0.0, 1.0];
+    let tail = [0.0, -1.0];
+
+    extend(&mut wave, &head);
+    extend(&mut wave, &tail);
+
+    println!("{:?}", wave);
+}
+
+fn extend(vec: &mut Vec<f64>, slice: &[f64]) {
+    for elt in &slice[..] {
+        vec.push(*elt);
+    }
+}
+
+fn a1<'a, 'b>(r: &'a i32, s: &'b i32) -> &'a i32 {
+    let _ = s;
+    r
+}
+
+fn a2<'a>(r: &'a i32, s: &'a i32) -> &'a i32 {
+    let _ = s;
+    r
+}
+
+#[allow(dead_code)]
+struct G<'a, 'b> {
+    x: &'a i32,
+    y: &'b i32,
+}
+
+fn build_vec(i: &[i32]) -> Vec<&i32> {
+    let mut v = Vec::new();
+    for n in i {
+        v.push(n);
+    }
+    v
+}
+
+struct D<'b> {
+    s: S<'b>,
+}
+
+#[derive(Debug)]
+struct S<'a> {
+    #[allow(dead_code)]
+    r: &'a i32,
 }
 
 fn smallest(v: &[i32]) -> &i32 {
