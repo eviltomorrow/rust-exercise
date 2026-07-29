@@ -167,6 +167,17 @@ fn main() {
     extend(&mut wave, &tail);
 
     println!("{:?}", wave);
+
+    let mut v = vec![1, 2, 3, 4, 5];
+    v.push(10);
+    let r = &v;
+    println!("{:?}, {}", r, r[0]);
+
+    let mut v = vec!["A".to_string(), "B".to_string()];
+    v.push("C".to_string());
+    println!("{}", v[0]);
+    let r = &v[0];
+    println!("{}", r);
 }
 
 fn extend(vec: &mut Vec<f64>, slice: &[f64]) {
