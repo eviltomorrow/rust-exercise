@@ -178,6 +178,28 @@ fn main() {
     println!("{}", v[0]);
     let r = &v[0];
     println!("{}", r);
+
+    let mut x = 10;
+    let r1 = &x;
+    let r2 = &x;
+    println!("{}, {}", r1, r2);
+    x += 10;
+    println!("{}", x);
+
+    #[allow(unused_mut)]
+    let mut w = (107, 109);
+    let r = &w;
+    let r0 = &r.0;
+    // let m1 = &mut r.1;
+    println!("{}, {:?}", r0, w);
+
+    let mut v = (136, 139);
+    let m = &mut v;
+    let m0 = &mut m.0;
+    *m0 = 137;
+    let r1 = &m.1;
+    // v.1;
+    println!("{}", r1);
 }
 
 fn extend(vec: &mut Vec<f64>, slice: &[f64]) {
