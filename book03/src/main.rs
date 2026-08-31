@@ -8,6 +8,29 @@ fn main() {
     let v = build_vector_2();
     println!("{:?}", v);
 
+    let f = str::is_empty;
+    f("H");
+
+    let x = 10_i32;
+    let y = 10_000_u64;
+    println!("{}, {}", x, y);
+
+    let x = 0x33DF3251;
+    let y = 0o106;
+    let z = 0b1101;
+    println!("{}, {}, {}", x, y, z);
+
+    let x = b'A';
+    let y = 'A';
+    let z = 65u8;
+    println!("{}, {}, {}", x, y, z);
+
+    let x = b'\'';
+    println!("{}", x);
+
+    let x = b'\x1b';
+    println!("{}", x);
+
     let x = -10;
     let _sum = x + 20i32;
     println!("{:?}", x.abs());
@@ -30,6 +53,13 @@ fn main() {
     assert_eq!(2525u16 as i16, 2525_i16);
 
     println!("{}", i16::abs(-4));
+
+    let x = -10;
+    fn choice_x(x: i32) {
+        let _ = x;
+    }
+    choice_x(x);
+    println!("{}", x.abs());
 
     let mut i: i32 = 1;
     loop {
@@ -64,6 +94,12 @@ fn main() {
     let x2: f32 = 0.;
     println!("{}", x1 == x2);
 
+    let mut x: f64 = 3.;
+    println!("{}", x);
+
+    x = 3f64;
+    println!("{}", x);
+
     let x = std::f64::consts::PI;
     println!("{}", x);
 
@@ -74,6 +110,9 @@ fn main() {
     let x = std::f64::consts::PI;
     let y = x as i32;
     println!("{}", y);
+
+    println!("{}", (2.0f64).sqrt());
+    println!("{}", f64::sqrt(2.0));
 
     let x = 10;
     if x < 20 {
