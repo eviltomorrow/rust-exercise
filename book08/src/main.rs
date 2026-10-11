@@ -16,6 +16,26 @@ fn main() {
 
     spores::produce_spore(&mut Sporangium {});
     spores::genes(&Spore {});
+
+    let mut s1 = 10;
+    let mut s2 = 20;
+    if s1 > s2 {
+        std::mem::swap(&mut s1, &mut s2);
+    }
+
+    use std::f64::consts::PI;
+    println!("{}", PI);
+
+    use std::collections::HashMap as CollectionHashMap;
+    #[allow(unused)]
+    use std::collections::HashSet;
+    #[allow(unused)]
+    use std::fs::File as fsFile;
+    #[allow(unused)]
+    use std::fs::{self};
+
+    let s = CollectionHashMap::<i32, String>::new();
+    println!("{:?}", s);
 }
 
 mod plant_structures;

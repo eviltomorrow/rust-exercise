@@ -16,3 +16,5 @@ pub(crate) fn genes(_spore: &Spore) -> Vec<Gene> {
 }
 
 fn recombine(_parent: &mut Cell) {}
+
+mod phcogc;
