@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use self::spores::Sporangium;
 use self::spores::Spore;
 
@@ -15,7 +17,9 @@ fn main() {
     // 总结：模块位于自己的文件中、模块位于自己的带有 mod.rs 的目录中，以及模块在自己的文件中，并带有包含子模块的补充目录
 
     spores::produce_spore(&mut Sporangium {});
-    spores::genes(&Spore {});
+    spores::genes(&Spore {
+        name: String::from("A"),
+    });
 
     let mut s1 = 10;
     let mut s2 = 20;
@@ -36,7 +40,18 @@ fn main() {
 
     let s = CollectionHashMap::<i32, String>::new();
     println!("{:?}", s);
+
+    plant_structures::try_synthesize();
+
+    let _ = self::image::Sampler {};
+
+    #[allow(unused)]
+    use ::image::Pixel;
 }
 
 mod plant_structures;
 mod spores;
+
+mod image {
+    pub struct Sampler {}
+}
