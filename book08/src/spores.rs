@@ -40,3 +40,5 @@ pub struct git_revspec {}
 
 #[cfg(target_os = "android")]
 mod mobile {}
+
+mod tests {}
